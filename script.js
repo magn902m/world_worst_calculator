@@ -2,13 +2,17 @@
 
 window.addEventListener(`DOMContentLoaded`, settingUp);
 
+// Selecting the diffent html element.
 const firstNumberInput = document.querySelector(`#firstnumber`);
 const secondNumberInput = document.querySelector(`#secondnumber`);
 const operatorInput = document.querySelector(`#operator`);
 const clearBtn = document.querySelector(`#clear`);
 const calculateBtn = document.querySelector(`#calculate`);
 const ulResults = document.querySelector(`#results`);
+const checkboxBtn = document.querySelector(`#doround`);
+const decimals = document.querySelector(`#decimals`);
 
+// Creating diffent variables to hold a value in
 let firstNumber;
 let secondNumber;
 let resultValue;
@@ -34,8 +38,9 @@ function calculate() {
   //Taking the value and input into the variable
   firstNumber = parseInt(firstNumberInput.value);
   secondNumber = parseInt(secondNumberInput.value);
-
   operator = operatorInput.value;
+
+  // Looing what operator there i choicen and calculate
   if (operator === `add`) {
     resultValue = parseInt(firstNumber) + parseInt(secondNumber);
   } else if (operator === `sub`) {
@@ -46,7 +51,19 @@ function calculate() {
     resultValue = firstNumber / secondNumber;
   }
 
+  // Looking if the checkbox i checked.
+  if (checkboxBtn.checked == true) {
+    // Take the decimals value, and add it to a variable
+    roundingUp = parseInt(decimals.value);
+    // Take the result and round it up
+    resultValue = resultValue.toFixed(roundingUp);
+  }
+
+  // Creating a html list element
   result = document.createElement(`li`);
   result.textContent = resultValue;
+  // Pasing the list element in the DOM.
   ulResults.appendChild(result);
+  // Adding scroll to the result list
+  ulResults.scrollTop = ulResults.scrollHeight;
 }
