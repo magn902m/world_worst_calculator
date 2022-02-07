@@ -60,7 +60,7 @@ function calculate() {
     resultValue = resultValue.toFixed(roundingUp);
   }
 
-  firstNumber.value = resultValue;
+  firstNumberInput.value = resultValue;
 
   // Creating a html list element
   result = document.createElement(`li`);
