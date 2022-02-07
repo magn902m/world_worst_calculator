@@ -1,7 +1,5 @@
 `use strict`;
 
-window.addEventListener(`DOMContentLoaded`, settingUp);
-
 // Selecting the diffent html element.
 const firstNumberInput = document.querySelector(`#firstnumber`);
 const secondNumberInput = document.querySelector(`#secondnumber`);
@@ -17,6 +15,9 @@ let firstNumber;
 let secondNumber;
 let resultValue;
 let result;
+let roundingUp;
+
+window.addEventListener(`DOMContentLoaded`, settingUp);
 
 function settingUp() {
   console.log(`settingUp`);
@@ -40,7 +41,7 @@ function calculate() {
   secondNumber = parseInt(secondNumberInput.value);
   operator = operatorInput.value;
 
-  // Looing what operator there i choicen and calculate
+  // Looing what operator there is choicen and calculate
   if (operator === `add`) {
     resultValue = parseInt(firstNumber) + parseInt(secondNumber);
   } else if (operator === `sub`) {
@@ -58,6 +59,8 @@ function calculate() {
     // Take the result and round it up
     resultValue = resultValue.toFixed(roundingUp);
   }
+
+  firstNumber.value = resultValue;
 
   // Creating a html list element
   result = document.createElement(`li`);
